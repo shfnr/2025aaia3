@@ -1,0 +1,25 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+
+//week14-2.cpp
+//206. Reverse Linked List
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if(head==nullptr || head->next==nullptr) return head;//終止條件
+
+        //5行搞定函示呼叫函式
+        ListNode* ans = reverseList(head->next);
+        head->next->next = head;//現在的下一筆的夏禕要指向自己
+        head->next = nullptr;//收尾
+        return ans;
+    }
+};
